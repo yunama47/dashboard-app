@@ -116,9 +116,9 @@ with col1:
     st.metric("Total user", value=total_user)
 
 with col2:
-    avg_temp = hour_df.loc[hour_df.dteday == today].temp.mean()
+    avg_temp = day_df.loc[day_df.dteday == today].temp * 41
     degree_sign = u"\N{DEGREE SIGN}"
-    st.metric("Average Temperature", value=f"{avg_temp:.2f}{degree_sign}C")
+    st.metric("Average Temperature", value=f"{float(avg_temp):.2f}{degree_sign}C")
 
 dailly_stat = plot_per_hours(today)
 st.pyplot(dailly_stat)

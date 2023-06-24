@@ -18,7 +18,7 @@ def kelompokwaktu(hr):
     return 'sore'
   
 def get_corr(_with):
-  corr_index = ["month","is holiday","weekday","is working day","weather","temperature","feeling temperature","humidity","windspeed",]
+  corr_index = ["month","holiday","weekday","working day","weather","temperature","feeling temperature","humidity","windspeed",]
   corr = day_df.loc[:,parameters].corrwith(_with)
   corr.index = corr_index
   corr = corr.abs().reset_index().rename({0:'corr'}, axis=1)
@@ -60,6 +60,7 @@ def plot_per_hours(day):
   plt.plot(one_day['hr'], one_day['registered'], color='#ff6666')
   plt.title(f'user stats on {day.date()}')
   plt.xticks(one_day['hr'])
+  plt.yticks([])
   plt.xlabel('hour',size=15)
   plt.ylabel(None)
   plt.legend(['casual user','registered user'])
@@ -141,7 +142,7 @@ plt.plot(X_axis, by_weekday.casual, label = 'casual', color='#4afa4a')
 plt.plot(X_axis, by_weekday.registered, label = 'registered', color='#4a4afa')
 
 plt.xticks(X_axis, X)
-plt.axis()
+plt.yticks([])
 plt.xlabel(None)
 plt.ylabel("user stats")
 plt.legend()
@@ -177,11 +178,11 @@ st.pyplot(pie)
 # Parameters correlation
 st.subheader(f"Most and Least correlation with {corr_with}")
 if corr_with == 'All user':
-    corrplot = corr_barplot(day_df.cnt)
+    corrplot = corr_barplot(day_df.cnt,corr_with)
     st.pyplot(corrplot)
 if corr_with == 'Casual user':
-    corrplot = corr_barplot(day_df.casual)
+    corrplot = corr_barplot(day_df.casual,corr_with)
     st.pyplot(corrplot)
 if corr_with == 'Registered user':
-    corrplot = corr_barplot(day_df.registered)
+    corrplot = corr_barplot(day_df.registered,corr_with)
     st.pyplot(corrplot)

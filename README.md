@@ -2,8 +2,9 @@
 
 ## Setup
 ```
-conda create --name main-ds python=3.9
-conda activate main-ds
+conda create --name dashboard-app python=3.10
+conda activate dashboard-app
+conda install -c conda-forge jupyterlab
 pip install -r requirements.txt
 ```
 ## Run dashboard app

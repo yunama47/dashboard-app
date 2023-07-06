@@ -16,4 +16,4 @@ streamlit run dashboard.py
 link :
 https://dashboard-app-tulu0i98emq.streamlit.app/
 
-![Alt text](image.png)
+![img.png](img.png)
